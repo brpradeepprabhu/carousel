@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>carousel</title>
+    <script src="../lib/carosuel.min.js"></script>
+    <script src="../createjs/easeljs-0.7.0.min.js"></script>
+    <script src="../createjs/preloadjs-0.4.0.min.js"></script>
+
+<script>
+    var canvas, stage;
+    var carosueler;
+    function init() {
+        canvas = document.getElementById("canvas");
+        stage = new createjs.Stage(canvas);
+        var manifest =
+                [
+                    {src: "Images/A.png", id: "A"},
+                    {src: "Images/B.png", id: "B"},
+                    {src: "Images/C.png", id: "C"},
+                    {src: "Images/D.png", id: "D"},
+                    {src: "Images/E.png", id: "E"},
+                    {src: "Images/F.png", id: "F"},
+                    {src: "Images/I.png", id: "G"},
+                    {src: "Images/H.png", id: "H"},
+                    {src: "Images/I.png", id: "I"},
+                    {src: "Images/J.png", id: "J"},
+                    {src: "Images/K.png", id: "K"}
+                ];
+        var loader = new createjs.LoadQueue(false);
+        loader.loadManifest(manifest);
+        loader.addEventListener("complete", loadComplete);
+        new createjs.Ticker.addEventListener("tick", stage);
+    }
+    function loadComplete() {
+        var bitmap1 = new createjs.Bitmap("Images/A.png");
+        var bitmap2 = new createjs.Bitmap("Images/B.png");
+        var bitmap3 = new createjs.Bitmap("Images/C.png");
+        var bitmap4 = new createjs.Bitmap("Images/D.png");
+        var bitmap5 = new createjs.Bitmap("Images/E.png");
+        var bitmap6 = new createjs.Bitmap("Images/F.png");
+        var bitmap7 = new createjs.Bitmap("Images/H.png");
+        var bitmap8 = new createjs.Bitmap("Images/I.png");
+        var bitmap9 = new createjs.Bitmap("Images/I.png");
+        var bitmap10 = new createjs.Bitmap("Images/J.png");
+        var bitmap11 = new createjs.Bitmap("Images/K.png");
+        var imageArray = [bitmap1, bitmap2, bitmap3, bitmap4, bitmap5, bitmap6, bitmap7, bitmap8, bitmap9, bitmap10, bitmap11];
+        carosueler = new carosuel(imageArray, 450, -70, 122, 122, stage, {speed:-0.002, radius:250});
+    }
+</script>
+</head>
+<body onload="init()">
+<canvas id="canvas" height="500" width="1000" style="background-color: black"></canvas>
+</body>
+</html>
